@@ -99,20 +99,18 @@ CREATE TABLE Categories (
     Map_URL VARCHAR(255) NULL,
     Created_At DATETIME NOT NULL DEFAULT GETDATE(),
 
-    CONSTRAINT FK_Categories_Events
-        FOREIGN KEY (Event_ID)
-        REFERENCES Events(Event_ID),
+    CONSTRAINT FK_WeatherLogs_Events
+    FOREIGN KEY (Event_ID)
+    REFERENCES Events(Event_ID),
 
-    CONSTRAINT CK_Categories_Distance
-        CHECK (Distance_Km > 0),
+CONSTRAINT CK_WeatherLogs_Humidity
+    CHECK (Humidity_Percent IS NULL
+           OR Humidity_Percent BETWEEN 0 AND 100),
 
-    CONSTRAINT CK_Categories_EntryFee
-        CHECK (Entry_Fee >= 0),
-
-    CONSTRAINT CK_Categories_MaxParticipation
-        CHECK (Maximum_Participation > 0)
+CONSTRAINT CK_WeatherLogs_WindSpeed
+    CHECK (Wind_Speed_Kmh IS NULL
+           OR Wind_Speed_Kmh >= 0)
 );
-GO
 
 
 -- ============================================================
