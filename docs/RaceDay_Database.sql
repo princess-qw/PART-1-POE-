@@ -383,6 +383,12 @@ VALUES
 
 ('HydroPlus', 'Kabelo Mokoena',
  'kabelo@hydroplus.co.za', '0125559876', 'Beverage');
+CONSTRAINT UQ_EventSponsors
+    UNIQUE (Event_ID, Sponsor_ID),
+
+CONSTRAINT CK_EventSponsors_Tier
+    CHECK (Sponsorship_Tier IN ('Bronze', 'Silver', 'Gold', 'Platinum'))
+);
 GO
 
 
