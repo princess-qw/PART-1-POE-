@@ -105,14 +105,27 @@ CREATE TABLE Categories (
     CONSTRAINT FK_WeatherLogs_Events
     FOREIGN KEY (Event_ID)
     REFERENCES Events(Event_ID),
-
-CONSTRAINT CK_WeatherLogs_Humidity
-    CHECK (Humidity_Percent IS NULL
-           OR Humidity_Percent BETWEEN 0 AND 100),
-
-CONSTRAINT CK_WeatherLogs_WindSpeed
-    CHECK (Wind_Speed_Kmh IS NULL
-           OR Wind_Speed_Kmh >= 0)
+-- ============================================================
+-- SHOW CATEGORY ENROLMENT CAPACITY
+-- ============================================================
+SELECT
+    E.Event_Name,
+    C.Category_Name,
+    C.Maximum_Participation,
+    COUNT(EN.Enrolment_ID) AS Current_Enrolments,
+    C.Maximum_Participation - COUNT(EN.Enrolment_ID)
+        AS Spaces_Remaining
+FROM Categories C
+INNER JOIN Events E
+    ON C.Event_ID = E.Event_ID
+LEFT JOIN Enrolments EN
+    ON C.Category_ID = EN.Category_ID
+GROUP BY
+    E.Event_Name,
+    C.Category_Name,
+    C.Maximum_Participation
+ORDER BY E.Event_Name, C.Category_Name;
+GO
 );
 
 
