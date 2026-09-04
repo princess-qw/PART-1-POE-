@@ -76,9 +76,12 @@ CREATE TABLE Events (
     Registration_Deadline DATE NOT NULL,
     Created_At DATETIME NOT NULL DEFAULT GETDATE(),
 
-    CONSTRAINT FK_Events_Organisers
-        FOREIGN KEY (Organiser_ID)
-        REFERENCES Organisers(Organiser_ID)
+  CONSTRAINT FK_Events_Organisers
+    FOREIGN KEY (Organiser_ID)
+    REFERENCES Organisers(Organiser_ID),
+
+CONSTRAINT CK_Events_RegistrationDeadline
+    CHECK (Registration_Deadline <= Event_Date)
 );
 GO
 
