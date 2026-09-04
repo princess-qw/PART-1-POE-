@@ -1,0 +1,48 @@
+name: Validate RaceDay Documentation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check docs folder exists
+        run: |
+          if [ ! -d "docs" ]; then
+            echo "ERROR: docs folder is missing"
+            exit 1
+          fi
+
+      - name: Check ERD image exists
+        run: |
+          if [ ! -f "docs/ERD.png" ]; then
+            echo "ERROR: docs/ERD.png is missing"
+            exit 1
+          fi
+
+      - name: Check API endpoint plan exists
+        run: |
+          if [ ! -f "docs/RaceDay_API_Endpoint_Plan.md" ]; then
+            echo "ERROR: API endpoint plan is missing"
+            exit 1
+          fi
+
+      - name: Check SQL script exists
+        run: |
+          if [ ! -f "docs/RaceDay_Database.sql" ]; then
+            echo "ERROR: SQL script is missing"
+            exit 1
+          fi
+
+      - name: Validation successful
+        run: echo "All required RaceDay documentation files are present."
