@@ -282,11 +282,26 @@ GO
 -- ============================================================
 -- INSERT PARTICIPANTS
 -- ============================================================
-INSERT INTO Participants
-(User_ID, First_Name, Last_Name, Phone, Date_Of_Birth)
-VALUES
-(3, 'Sipho', 'Dlamini', '0734567890', '2002-05-14'),
-(4, 'Naledi', 'Maseko', '0745678901', '2001-09-22');
+-- SHOW FULL PARTICIPANT RACE ENROLMENT DETAILS
+-- ============================================================
+SELECT
+    P.Participant_ID,
+    P.First_Name,
+    P.Last_Name,
+    E.Event_Name,
+    E.Event_Date,
+    C.Category_Name,
+    C.Distance_Km,
+    EN.Bib_Number,
+    EN.Status
+FROM Enrolments EN
+INNER JOIN Participants P
+    ON EN.Participant_ID = P.Participant_ID
+INNER JOIN Categories C
+    ON EN.Category_ID = C.Category_ID
+INNER JOIN Events E
+    ON C.Event_ID = E.Event_ID
+ORDER BY E.Event_Date;
 GO
 
 
