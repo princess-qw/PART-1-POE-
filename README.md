@@ -1,10 +1,10 @@
 # RaceDay Event Management System
 
-## Project Description
+## System Description
 
 RaceDay is an event management system designed to support the organisation and participation of running events.
 
-The system allows organisers to create and manage events, event categories, sponsors, participant enrolments, payments, race results and weather information.
+The system allows organisers to create and manage events, race categories, sponsors, participant enrolments, payments, race results and weather information.
 
 Participants can create accounts, view available events and categories, enrol in race categories, make payments and view their race results.
 
@@ -12,67 +12,47 @@ Participants can create accounts, view available events and categories, enrol in
 
 ### Organiser
 
-The Organiser is responsible for managing RaceDay events.
+The Organiser is responsible for managing running events within the RaceDay system.
 
-The Organiser can:
-
-- Create, update and delete events
-- Create and manage event categories
-- View participant enrolments
-- Manage payment statuses
-- Record and update race results
-- Create and manage sponsors
-- Link sponsors to events
-- Refresh and manage event weather information
+An Organiser can:
+- Create, view, update and delete their events.
+- Create and manage event categories.
+- View participant enrolments for their events.
+- Manage payment statuses.
+- Create and update race results.
+- Create sponsors and link sponsors to events.
+- Access and refresh event weather information.
 
 ### Participant
 
-The Participant uses the system to take part in RaceDay events.
+The Participant is a user who registers for and participates in running events.
 
-The Participant can:
-
-- Register for an account
-- View upcoming events
-- View available event categories
-- Enrol in a race category
-- View and cancel their own enrolments
-- Submit payments
-- View their race result history
+A Participant can:
+- Register and manage their profile.
+- View available events and race categories.
+- Enrol in a race category.
+- View and cancel their own enrolments.
+- Submit payment information.
+- View their race results.
 
 ## Project Documentation
 
-The `/docs` folder contains the main planning and database files for the project:
+The `/docs` folder contains the planning and database documentation for the RaceDay system, including:
 
-- `ERD.png` – Final Entity Relationship Diagram
-- `ERD.drawio` – Editable ERD source file
-- `RaceDay_API_Endpoint_Plan.md` – API endpoint plan
-- `RaceDay_Database.sql` – SQL Server database script
-
-## Database
-
-The RaceDay database was created using Microsoft SQL Server Management Studio (SSMS).
-
-The SQL script:
-
-- Creates the RaceDay database
-- Creates all required tables
-- Defines primary keys and foreign keys
-- Applies constraints such as NOT NULL, UNIQUE, CHECK and DEFAULT
-- Inserts realistic sample data
-- Includes verification queries to test the database relationships
+- `ERD.png` – Entity Relationship Diagram.
+- `RaceDay_API_Endpoint_Plan.md` – REST API endpoint plan.
+- `RaceDay_Database.sql` – SQL Server database creation, sample data and verification script.
 
 ## CI/CD
 
-GitHub Actions is used to validate that the required project documentation exists in the `/docs` folder.
+GitHub Actions is used to validate the repository structure and confirm that the required RaceDay documentation files are present.
 
-### Successful Build
+### Successful CI/CD Build
 
-A screenshot of the successful GitHub Actions workflow will be added here.
+![Successful GitHub Actions Build](images/cicd-success.png)
 
 ## Video Demonstration
 
-An unlisted YouTube video will be added here after recording.
+The following unlisted YouTube video demonstrates Sections A, B and C of the RaceDay Event Management System POE.
 
-YouTube link:
-
-`To be added`
+[Watch the RaceDay POE Demonstration on YouTube](https://youtube.com/watch?v=JFZP0ZBU8W0&si=E18L3oZsENgOZjQI)
